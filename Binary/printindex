@@ -1,0 +1,12 @@
+How to print the index rather than the value in arr
+
+static int printindex(int[] arr){
+    int temp = 0;
+
+    for(int i=0; i<arr.length; i++){
+        if(arr[i] > arr[temp]){
+            temp = i;
+        }
+    }
+    return temp;
+}

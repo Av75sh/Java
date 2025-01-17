@@ -1,0 +1,37 @@
+class Solution {
+    public int[] searchRange(int[] nums, int target) {
+        int[] ans = {-1, -1};
+        int start = unknown(nums, target, true);
+        int end = unknown(nums, target, false);
+
+        nums[0] = start;
+        nums[1] = end;
+        return ans;
+    }
+
+    int unknown(int[] nums, int target, boolean findindex){
+        int ans = -1;
+        int start = 0; 
+        int end = nums.length - 1;
+
+        while(start <= end){
+            int mid = start + (end - start) / 2;
+
+            if(target < nums[mid]){
+                start = mid + 1;
+            }
+            else if(target > nums[mid]){
+                end = start + 1;
+            }
+            else{
+                ans = mid;
+                if(findindex == true){
+                    start = mid + 1;
+                } else{
+                    end = mid - 1;
+                }
+            }
+        }
+        return ans;
+    }
+}
